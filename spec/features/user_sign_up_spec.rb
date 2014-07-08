@@ -7,9 +7,9 @@ feature 'user registration', %Q{
   } do
 
   before :each do
-    @user = FactoryGirl.build(:user)
+    @user = User.new(first_name: 'please', last_name: 'work', email: 'test@test.com', password: 'password')
     visit root_path
-    click_on 'Sign up'
+    click_on 'Sign Up'
   end
 
   scenario 'user provides valid information and signs up' do
@@ -20,7 +20,7 @@ feature 'user registration', %Q{
     fill_in 'user_password_confirmation', with: @user.password
 
     within('form') do
-      click_on 'Sign up'
+      click_on 'Sign Up'
     end
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
@@ -35,10 +35,10 @@ feature 'user registration', %Q{
     fill_in 'user_password_confirmation', with: ""
 
     within('form') do
-      click_on 'Sign up'
+      click_on 'Sign Up'
     end
 
     expect(page).to have_content("can't be blank")
-    expect(page).to_not have_content("Sign out")
+    expect(page).to_not have_content("Sign Out")
   end
 end
