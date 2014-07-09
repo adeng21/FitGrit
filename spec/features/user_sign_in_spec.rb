@@ -44,6 +44,6 @@ end
     end
 
     expect(page).to have_content("Invalid email or password.")
-    expect(page).to_not have_content('Welcome back #{@user.first_name}!')
+    expect(page).to_not have_content("Welcome back #{@user.first_name}!")
   end
 end
