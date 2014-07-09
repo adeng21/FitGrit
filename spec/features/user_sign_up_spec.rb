@@ -7,7 +7,7 @@ feature 'user registration', %Q{
   } do
 
   before :each do
-    @user = User.new(first_name: 'please', last_name: 'work', email: 'test@test.com', password: 'password')
+    @user = FactoryGirl.build(:user)
     visit root_path
     click_on 'Sign Up'
   end
